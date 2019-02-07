@@ -61,9 +61,10 @@ export default class SettingsScreen extends React.Component {
           <View style={styles.draggableContainer1}>
             <MovingBall />
           </View>
-          <MovingBall />
-          {/* <MovingBall style={styles.circle2} />
-          <MovingBall style={styles.circle2} /> */}
+
+          <View style={styles.draggableContainer2}>
+            <MovingBall />
+          </View>
 
           <View style={styles.submissionBox}>
             <Text style={styles.text}> Submit your answer here!! </Text>
@@ -127,11 +128,16 @@ let styles = StyleSheet.create({
   draggableContainer: {
     position: "absolute",
     top: Window.height / 5 - CIRCLE_RADIUS,
-    left: Window.width / 2 - 36
+    left: Window.width / 2 - 30
   },
   draggableContainer1: {
     position: "relative",
-    top: Window.height / 6 - CIRCLE_RADIUS,
+    top: Window.height / 10 - CIRCLE_RADIUS,
     left: -150
+  },
+  draggableContainer2: {
+    position: "relative",
+    top: -130,
+    left: Window.width / 2 - 250
   }
 });

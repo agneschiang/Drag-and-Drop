@@ -54,7 +54,7 @@ export default class MovingBall extends Component {
       gesture.moveX < 398 &&
       gesture.moveX > 0
     ) {
-      alert("You have put it into the circle already");
+      alert("You have submitted an answer");
       console.log("You have put inside the circle already");
     } else {
       console.log("It has dropped into the wrong place \n");
