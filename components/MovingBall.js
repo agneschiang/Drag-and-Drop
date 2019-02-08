@@ -9,6 +9,9 @@ import {
 } from "react-native";
 
 export default class MovingBall extends Component {
+  random_color = "#f9337a";
+  random_option = "";
+
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +21,8 @@ export default class MovingBall extends Component {
       position: {
         x: 0,
         y: 0
-      }
+      },
+      colorList: ["red", "white", "black", "gray"]
     };
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
@@ -74,9 +78,23 @@ export default class MovingBall extends Component {
     });
   }
 
-  onLayout(event) {}
+  componentDidMount() {
+    var colors = ["#c1c1c1", "#28ccc4", "#609ce2", "#fab544", "#f9337a"];
+    var options = ["option1", "option2", "option3", "option4"];
+    let colorIndex = Math.floor(Math.random() * colors.length);
+    let textIndex = Math.floor(Math.random() * options.length);
+    this.random_color = colors[colorIndex];
+    this.random_option = options[textIndex];
+  }
 
   render() {
+    const bubbleStyles = {
+      backgroundColor: this.random_color,
+      width: CIRCLE_RADIUS * 2,
+      height: CIRCLE_RADIUS * 2,
+      borderRadius: CIRCLE_RADIUS
+    };
+
     return (
       <View
         onLayout={this.setDropZoneValues.bind(this)}
@@ -84,9 +102,9 @@ export default class MovingBall extends Component {
       >
         <Animated.View
           {...this.panResponder.panHandlers}
-          style={[this.state.pan.getLayout(), styles.circle]}
+          style={[this.state.pan.getLayout(), bubbleStyles]}
         >
-          <Text style={styles.text}>option 1</Text>
+          <Text style={styles.text}>{this.random_option}</Text>
         </Animated.View>
       </View>
     );
